@@ -1,2 +1,7 @@
-### :point_right: This starter repo has moved to the [ionic-team/starters](https://github.com/ionic-team/starters/tree/master/ionic-angular/official/blank) repo! :point_left:
 # QR-Camera
+# Por:
+<ul>
+  <li> Elias Burgara Luis Alberto</li>
+  <li> Rivera Zavala Gianny Eduardo</li>
+  <li> Sosa Ortega Francisco Javier</li>
+</ul>
