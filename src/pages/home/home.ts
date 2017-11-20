@@ -8,7 +8,8 @@ import {Contacts,Contact,ContactField,ContactName} from '@ionic-native/contacts'
 })
 export class HomePage {
   options: BarcodeScannerOptions;
-  results: {};
+  //results: {};
+  results=null;
 
   constructor(private barcode: BarcodeScanner,public navCtrl: NavController,private contacts:Contacts) {
 
@@ -18,18 +19,28 @@ export class HomePage {
     this.options={
       prompt:'Escanea el código QR para guardar contacto'
     }
-    this.results= await this.barcode.scan(this.options);
-    console.log(this.results);
+    this.barcode.scan().then(barcodeData => {
+      this.results=barcodeData.text;
+    }, (err)=>{
+        console.log('Error: ' ,err);
+    });
+
+
+    //---Nota:--- Cambio la forma de pedir el Scan ----- // atte-Francisco sosa
+    //this.results= await this.barcode.scan(this.options);
+    //console.log(this.results);
+  
   }
   crearContacto(){
 		var contact: Contact = this.contacts.create();
 		var avatar ="./assets/icon/avatar.png";
-		contact.displayName = "francisco"; //this.datos['nombre'];
-		contact.phoneNumbers = 3111231178; //[new ContactField(this.datos['tipoNumero'], this.datos['numero'])];
+		contact.displayName = "Roberto"; //this.datos['nombre'];
+		contact.phoneNumbers = [new ContactField('mobile', '917-555-5432', true)];
 		contact.photos = [new ContactField('url',avatar,false)]
 		contact.save().then(
 		  () => { 
-			console.log('Contact Guardado!', contact)
+      console.log('Contact Guardado!', contact)
+      console.log(contact.displayName + " "+ contact.phoneNumbers );
 			
 		  },
 		  (error: any) => {
