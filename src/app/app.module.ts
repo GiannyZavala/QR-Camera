@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { BarcodeScanner } from "@ionic-native/barcode-scanner";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { Contacts } from '@ionic-native/contacts';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
+    Contacts,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BarcodeScanner
   ]
